@@ -1,7 +1,8 @@
-package com.josemiz.adoptame
+package com.josemiz.adoptame.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.josemiz.adoptame.R
 
 class MainActivity : AppCompatActivity() {
 

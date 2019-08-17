@@ -1,4 +1,6 @@
 package com.josemiz.core
 
-class BaseActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+abstract class BaseActivity : AppCompatActivity() {
 }
