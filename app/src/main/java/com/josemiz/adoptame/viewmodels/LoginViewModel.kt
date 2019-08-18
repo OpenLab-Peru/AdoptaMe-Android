@@ -1,8 +1,8 @@
-package com.josemiz.viewmodels
+package com.josemiz.adoptame.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.josemiz.core.Event
+import com.josemiz.adoptame.core.Event
 
 class LoginViewModel : ViewModel() {
     val firstName = MutableLiveData<String>()
@@ -10,5 +10,5 @@ class LoginViewModel : ViewModel() {
     val email = MutableLiveData<String>()
     val phone = MutableLiveData<String>()
 
-    private val saveUser = MutableLiveData<Event<Unit>>()
+    private val saveUser = MutableLiveData<com.josemiz.adoptame.core.Event<Unit>>()
 }

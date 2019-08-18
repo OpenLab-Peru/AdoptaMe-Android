@@ -1,4 +1,4 @@
-package com.josemiz.core
+package com.josemiz.adoptame.core
 
 import androidx.appcompat.app.AppCompatActivity
 

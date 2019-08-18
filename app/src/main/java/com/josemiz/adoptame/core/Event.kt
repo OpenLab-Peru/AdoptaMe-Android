@@ -1,4 +1,4 @@
-package com.josemiz.core
+package com.josemiz.adoptame.core
 
 open class Event<out T>(private val content: T) {
 

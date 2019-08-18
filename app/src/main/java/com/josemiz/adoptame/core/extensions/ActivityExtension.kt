@@ -1,9 +1,9 @@
-package com.josemiz.core.extensions
+package com.josemiz.adoptame.core.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.josemiz.core.ViewModelFactory
+import com.josemiz.adoptame.core.ViewModelFactory
 
 fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
     ViewModelProviders.of(this, ViewModelFactory.getInstance(application)).get(viewModelClass)

@@ -13,14 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.josemiz.core
+package com.josemiz.adoptame.core
 
 import android.annotation.SuppressLint
 import android.app.Application
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.josemiz.viewmodels.LoginViewModel
+import com.josemiz.adoptame.viewmodels.LoginViewModel
 
 /**
  * A creator is used to inject the product ID into the ViewModel
@@ -48,8 +48,10 @@ class ViewModelFactory private constructor(
         @Volatile private var INSTANCE: ViewModelFactory? = null
 
         fun getInstance(application: Application) =
-                INSTANCE ?: synchronized(ViewModelFactory::class.java) {
-                    INSTANCE ?: ViewModelFactory()
+                INSTANCE
+                    ?: synchronized(ViewModelFactory::class.java) {
+                    INSTANCE
+                        ?: ViewModelFactory()
                             .also { INSTANCE = it }
                 }
 
