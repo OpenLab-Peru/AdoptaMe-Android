@@ -20,6 +20,7 @@ import android.app.Application
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.josemiz.viewmodels.LoginViewModel
 
 /**
  * A creator is used to inject the product ID into the ViewModel
@@ -34,14 +35,8 @@ class ViewModelFactory private constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>) =
             with(modelClass) {
                 when {
-                    isAssignableFrom(StatisticsViewModel::class.java) ->
-                        StatisticsViewModel()
-                    isAssignableFrom(TaskDetailViewModel::class.java) ->
-                        TaskDetailViewModel()
-                    isAssignableFrom(AddEditTaskViewModel::class.java) ->
-                        AddEditTaskViewModel()
-                    isAssignableFrom(TasksViewModel::class.java) ->
-                        TasksViewModel()
+                    isAssignableFrom(LoginViewModel::class.java) ->
+                        LoginViewModel()
                     else ->
                         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
                 }
