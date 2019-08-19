@@ -13,4 +13,6 @@ abstract class BaseViewModelActivity<V : ViewModel,T> : BaseActivity() {
 
         viewModel = obtainViewModel(viewModel::class.java)
     }
+    
+    abstract fun setupObservers()
 }
