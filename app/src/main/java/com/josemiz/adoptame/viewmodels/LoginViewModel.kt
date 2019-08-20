@@ -10,5 +10,24 @@ class LoginViewModel : ViewModel() {
     val email = MutableLiveData<String>()
     val phone = MutableLiveData<String>()
 
-    private val saveUser = MutableLiveData<com.josemiz.adoptame.core.Event<Unit>>()
+    val setError = MutableLiveData<Event<String>>()
+    val saveUserSuccessfully = MutableLiveData<Event<Unit>>()
+
+    fun validateUser(){
+        when{
+            firstName.value.isNullOrBlank()->{
+                setError.value = Event("First name can not be empty")
+            }
+            lastName.value.isNullOrBlank()->{
+                setError.value = Event("First name can not be empty")
+            }
+            email.value.isNullOrBlank()->{
+                setError.value = Event("First name can not be empty")
+            }
+            phone.value.isNullOrBlank()->{
+                setError.value = Event("First name can not be empty")
+            }
+            else -> saveUserSuccessfully.value = Event(Unit)
+        }
+    }
 }
