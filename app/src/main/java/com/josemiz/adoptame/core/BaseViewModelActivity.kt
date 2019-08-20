@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import com.josemiz.adoptame.core.extensions.obtainViewModel
 
-abstract class BaseViewModelActivity<V : ViewModel,T> : BaseActivity() {
+abstract class BaseViewModelActivity<V : ViewModel> : BaseActivity() {
     lateinit var viewModel : V
 
     override fun onCreate(savedInstanceState: Bundle?) {
