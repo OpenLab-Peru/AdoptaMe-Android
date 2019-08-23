@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.targetSdkVersion
-
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["targetSdkVersion"]
 
     defaultConfig {
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["targetSdkVersion"]
         versionCode 1
         versionName "1.0"
 
@@ -17,8 +17,12 @@ android {
     }
 
     buildTypes {
-        release {
+        assembleDebug{
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,12 +31,16 @@ android {
 
 dependencies {
 
-    implementation "androidx.core:core-ktx:$androidXCoreVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    def appDependencies = rootProject.ext.appDependencies
+    def testDependencies = rootProject.ext.testDependencies
+    def androidTestDependencies = rootProject.ext.androidTestDependencies
 
-    testImplementation "junit:junit:$junitVersion"
+    implementation appDependencies.core
+    implementation appDependencies.kotlin
+    implementation appDependencies.lifecycleExtensions
 
-    androidTestImplementation "androidx.test:runner:$androidXTestVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    testImplementation testDependencies.junit
+
+    androidTestImplementation androidTestDependencies.androidXTestRunner
+    androidTestImplementation androidTestDependencies.androidXEspressoCore
 }
